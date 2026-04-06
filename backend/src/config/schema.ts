@@ -5,7 +5,6 @@ import { Role, Category } from '../types';
 // ─── User ───────────────────────────────────────────────────────────────────
 
 export interface IUser extends Document {
-  _id: string;
   name: string;
   email: string;
   password_hash: string;
@@ -52,7 +51,6 @@ export const RefreshTokenModel: Model<IRefreshToken> =
 // ─── Product ──────────────────────────────────────────────────────────────────
 
 export interface IProduct extends Document {
-  _id: string;
   name: string;
   price: number;
   category: Category;
@@ -87,7 +85,6 @@ export interface ICartItem {
 }
 
 export interface ICart extends Document {
-  _id: string;
   user_id: string;
   items: ICartItem[];
   total_items: number;
