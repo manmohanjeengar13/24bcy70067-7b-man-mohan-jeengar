@@ -19,9 +19,14 @@ dotenv.config();
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '4000');
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
+const CLIENT_URL = (process.env.CLIENT_URL || 'http://localhost:3000').trim();
 
-app.use(cors({ origin: CLIENT_URL, credentials: true }));
+app.use(cors({ 
+  origin: [CLIENT_URL],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
